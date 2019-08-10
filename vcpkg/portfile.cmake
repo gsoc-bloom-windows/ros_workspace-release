@@ -2,19 +2,13 @@ include(vcpkg_common_functions)
 
 set(VCPKG_BUILD_TYPE release)
 
-@[if GitSource == 'gitlab']@
-vcpkg_from_gitlab(
-@[elif GitSource == 'github']@
 vcpkg_from_github(
-@[elif GitSource == 'bitbucket']@
-vcpkg_from_bitbucket(
-@[end if]@
     OUT_SOURCE_PATH SOURCE_PATH
-    REPO @(UserName)/@(RepoName)
-    REF @(TagName)
+    REPO gsoc-bloom-windows/ros_workspace-release
+    REF vcpkg/ros-dashing-ros-workspace_0.7.1-11_10
 )
 
-set(ROS_BASE_PATH "C:/opt/ros/@(RosDistro)")
+set(ROS_BASE_PATH "C:/opt/ros/dashing")
 file(TO_NATIVE_PATH "${ROS_BASE_PATH}" ROS_BASE_PATH)
 
 vcpkg_configure_cmake(
